@@ -21,10 +21,10 @@ import random
 import string
 from datetime import datetime
 
-username = quote_plus("TPawarAtlas")
-password = quote_plus("AtlasPawar@270409")
+username = quote_plus("YOUR_MONGO_DB_USERNAME")
+password = quote_plus("YOUR_MONGO_DB_PASSWORD")
 
-uri =f"mongodb+srv://{username}:{password}@breakoutcluster.m9dal.mongodb.net/?retryWrites=true&w=majority&appName=BreakOutCluster"
+uri = "YOUR_MONGO_DB_URI"
 
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client["breakout_bot"]
@@ -33,9 +33,9 @@ chats_collection = db["chats"]
 files_collection = db["files"]
 trans_collection = db["trans"]
 
-genai.configure(api_key="AIzaSyDvCRI02xaH0XPo_PIhJHpXmgd58S5U8tM")
+genai.configure(api_key="YOUR_GEMINI_API_KEY")
 
-app = Application.builder().token("7563583148:AAE70L7yKxojt6SNdRNQEu6RRfdcw61BVBA").build()
+app = Application.builder().token("YOUR_TELEGRAM_BOT").build()
 
 referrals_collection = db["referrals"]
 
@@ -270,7 +270,7 @@ async def handle_Web_Search(update: Update, context: CallbackContext):
         await update.message.reply_text("Usage: /websearch <your query>")
         return
 
-    search_url = f"https://www.googleapis.com/customsearch/v1?q={query}&key=AIzaSyDhFxivgRB-esG4iNq2fKJHDPA0fRXNDRk&cx=95576a285bb2d45ca"
+    search_url = f"https://www.googleapis.com/customsearch/v1?q={query}&key=YOUR_GOOGLE_API_KEY&cx=YOUR_CX"
     response = requests.get(search_url).json()
     
     results = response.get("items", [])[:3]  # Get top 3 results
