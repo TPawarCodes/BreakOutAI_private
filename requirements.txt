@@ -1,0 +1,7 @@
+pymongo
+Pillow
+python-telegram-bot
+google-generativeai
+requests
+PyMuPDF
+googletrans
